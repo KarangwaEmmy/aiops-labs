@@ -30,7 +30,7 @@ services:
     build: "./containers/monitoring"
     tty: true
     ports:
-      - "4000:4000"
+      - "7000:7000"
 
   node_exporter:
     container_name: "prometheus_node_exporter"

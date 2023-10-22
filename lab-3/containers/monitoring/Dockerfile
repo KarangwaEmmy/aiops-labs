@@ -8,7 +8,7 @@ COPY . /app
 WORKDIR /app
 
 # Install Prometheus client library
-RUN pip install prometheus_client Prophet scikit-learn requests datetime pandas tabulate matplotlib
+RUN pip install prometheus_client Prophet scikit-learn requests datetime pandas tabulate matplotlib tabulate
 
 # Entry prometheus_client
 ENTRYPOINT [ "/usr/local/bin/dumb-init", "--" ]
