@@ -19,8 +19,7 @@ scrape_configs:
     static_configs:
       - targets:
           - "app_one:8000"
-  - job_name: "monitoring"
+  - job_name: "booking"
     static_configs:
       - targets:
-        - "monitoring:7000"
-
+        - "104.154.168.187:9080"
