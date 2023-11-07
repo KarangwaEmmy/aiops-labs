@@ -26,31 +26,30 @@ console log
 - Dataframe
 ![Alt text](./screenshots/dataframe.png)
 
-- Prometheus metrics
+- Grafana Dashboards
+![Alt text](./screenshots/gauge_anomal_counts.png)
+![Alt text](./screenshots/gauge_mape_grafana.png)
+![Alt text](./screenshots/mae_gauge_grafana.png)
 
 
 ## Lab Task – Explore model quality vs training time series and forecast durations
 ### 1. Seasonality in the Model:
- - The code specifically disables seasonality when creating the Prophet model by setting yearly_seasonality, weekly_seasonality, and daily_seasonality to False. This means that the model does not consider annual, weekly, or daily seasonality when making forecasts.
- - The absence of seasonality may be a deliberate choice based on the nature of the metric data. If the metric data doesn't exhibit strong seasonality patterns, it's reasonable to exclude seasonality components from the model to avoid overfitting. Including seasonality when it doesn't exist can lead to poorer forecasts.
+ It appears that enabling weekly seasonality (while disabling yearly and daily seasonality) has been helpful in capturing patterns in the data. This is evident from the "Anomalies Detected" column, which shows the occurrences of anomalies in the data. The fact that the number of anomalies detected remains relatively consistent suggests that the model is effectively capturing and accounting for variations in the data. Additionally, the "MAE" (Mean Absolute Error) and "MAPE" (Mean Absolute Percentage Error) values are within reasonable ranges, indicating that the model's forecasts are reasonably accurate.
 
 ### 2. Forecast Horizon and Training Data:
-- The code in the notebook doesn't explicitly mention the forecast horizon for predictions. It generates forecasts for the test data, but the length of the forecast is not clearly defined.
-- The effect of adding a longer baseline of training data can be twofold:
-        - Better Model Understanding: With more historical data, the model can better understand long-term trends and patterns, potentially leading to more accurate forecasts.
-        - Delayed Model Updates: However, if the model continuously reuses a long baseline for training, it might not adapt quickly to short-term changes or anomalies in the data.
+- From the monitoring file codes, indicated that the forecast is in interval of 1 minute. The forecasting horizon is limited to short-term predictions within a few minutes. Adding a longer baseline of training data can potentially improve the model's ability to make longer-term forecasts by capturing longer-term trends and patterns. 
 
 ### 3. Reasonable Baseline of Data for Production:
 - The choice of a reasonable baseline of data for a Prophet model in a production system depends on several factors, including the nature of the metric data, the desired forecasting horizon, and the acceptable trade-off between responsiveness and accuracy.
 - A longer baseline of data (historical data) is generally helpful for understanding long-term trends and improving forecast accuracy. However, the ideal baseline depends on the specific use case.
-- Operational challenges might arise if the length of training data becomes too large. Longer training times may require more computational resources and storage space. Additionally, if the data distribution significantly changes over time, using very old data might not be useful.
+- Operational challenges might arise if the length of training data becomes too large. Longer training times may require more computational resources and storage space.
 
 ### 4. Retraining in a Production Setting:
 - Whether a Prophet model should be allowed to retrain continuously in a production setting or require manual review/approval depends on the specific use case and the importance of real-time responsiveness.
 - Advantages of Continuous Retraining:
         1. `Real-time adaptability:` Continuous retraining allows the model to adapt quickly to changing data patterns.
         2. `Improved accuracy:` It helps in capturing short-term fluctuations and anomalies.
-        Pitfalls of Fully Automatic Operation:
+- Pitfalls of Fully Automatic Operation:
         3. `Overfitting:` If not carefully managed, continuous retraining may lead to overfitting, especially if there are data quality issues or noise.
 
 
