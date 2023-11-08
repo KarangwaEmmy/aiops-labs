@@ -40,9 +40,21 @@
 ![Alt text](./screenshots/grafana_time_series.png)
 
 ### 9
+![Alt text](./screenshots/scaling_loadgenerator.png)
+![Alt text](./screenshots/2_replicas_scalling.png)
+![Alt text](./screenshots/scaling_to_2_replicas.png)
+![Alt text](./screenshots/scalling_down.png)
 
 ## Lab Task 3 (From Kiali exploration)
+![Alt text](./screenshots/Kiali_dashboard_graph.png)
+- addservice
+![Alt text](./screenshots/adservice_details.png)
+![Alt text](./screenshots/addservice_trace.png)
 
+- cartservice
+![Alt text](./screenshots/cartservice_details.png)
+![Alt text](./screenshots/cartservice_trace.png)
 
+- 
 
 ## Lab Task 4
