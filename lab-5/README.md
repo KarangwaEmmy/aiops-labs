@@ -46,7 +46,8 @@
 ![Alt text](./screenshots/scalling_down.png)
 
 ## Lab Task 3 (From Kiali exploration)
-![Alt text](./screenshots/Kiali_dashboard_graph.png)
+![Alt text](./screenshots/Kiali_dashboard_graphs.png)
+
 - addservice
 ![Alt text](./screenshots/adservice_details.png)
 ![Alt text](./screenshots/addservice_trace.png)
@@ -55,6 +56,23 @@
 ![Alt text](./screenshots/cartservice_details.png)
 ![Alt text](./screenshots/cartservice_trace.png)
 
-- 
 
 ## Lab Task 4
+- Deploying Delay 0.2 seconds
+![Alt text](./screenshots/delay_2s.png)
+
+
+
+- Deploying Delay 0.4 seconds
+![Alt text](./screenshots/delay_4s.png)
+
+### Shut down the cluster
+    kubectl delete -k .
+![Alt text](./screenshots/delete_cluster.png)
+
+    kubectl delete -f /sample/addons
+![Alt text](./screenshots/delete_istio.png)
+
+- Delete cluster
+    gcloud container clusters delete lab5    --project=aiops-400918     --zone=us-central1-a
+
