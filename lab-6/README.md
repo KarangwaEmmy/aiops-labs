@@ -1,0 +1,1 @@
+# Lab 6: Anomaly detection in GKE with Prophet and Istio
