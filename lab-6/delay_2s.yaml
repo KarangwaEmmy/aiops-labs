@@ -11,7 +11,7 @@ spec:
         app: "checkoutservice"
     fault:
       delay:
-        fixedDelay: .2s
+        fixedDelay: .4s
         percent: 100 
     route:
       - destination:
