@@ -63,7 +63,7 @@ def main(waiting_time):
 
     df_train['y']=df_train['y'].astype(float)
 
-    
+
     df_train.info()
 
     # Add seasonality
@@ -88,12 +88,12 @@ def main(waiting_time):
             df_test['ds'] = df_test['ds'] - test_offset
 
             df_test['ds'] = df_test['ds'].apply(lambda sec: datetime.fromtimestamp(sec))
-        
+
             df_test['y']=df_test['y'].astype(float)
             df_test.info()
 
-           
-                                    
+
+
             # Make prediction
             forecast = model.predict(df_test)
 
