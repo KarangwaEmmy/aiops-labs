@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: monitorservice
+  labels:
+    app: monitor_app
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      app: monitor_app
+      tier: web
+  template:
+    metadata:
+      labels:
+        app: monitor_app
+        tier: web
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8099"
+        prometheus.io/path: "/metrics"
+    spec:
+      containers:
+      - name: monitor-app
+        image: index.docker.io/kemmyxy/lab7monitor:latest
+        ports:
+        - containerPort: 8080
+        imagePullPolicy: Always
+        command: ["python"]
+        args: ["monitor.py","-afrontend","-bshippingservice","-ffrontend.json","-p8099","15"]
+        resources:
+          requests:
+            cpu: 200m
+
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: monitorcheckoutservice
+  labels:
+    app: monitor_checkoutservice_app
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      app: monitor_checkoutservice_app
+      tier: web
+  template:
+    metadata:
+      labels:
+        app: monitor_checkoutservice_app
+        tier: web
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8090"
+        prometheus.io/path: "/metrics"
+    spec:
+      containers:
+      - name: monitor-app
+        image: index.docker.io/kemmyxy/lab7monitor:latest
+        ports:
+        - containerPort: 8080
+        imagePullPolicy: Always
+        command: ["python"]
+        args: ["monitor.py","-acheckoutservice","-bshippingservice","-fcheckoutservice.json","-p8090","15"]
+        resources:
+          requests:
+            cpu: 200m
