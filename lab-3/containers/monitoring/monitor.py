@@ -16,17 +16,17 @@ gauge_mae = Gauge('mae_gauge', 'Guage MAE')
 gauge_mape = Gauge('mape_gauge', 'Guage Mape')
 gauge_anomaly_counts = Gauge('gauge_anomaly_counts', 'Anomaly Counts Gauge')
 
+# Create an empty dataframe to store results
+results_data = pd.DataFrame(columns=["Current Time", "MAE", "MAPE", "Anomalies Detected"])
+
 # Simulate metric updates
 if __name__ == '__main__':
     start_http_server(7000)  # Start Prometheus HTTP server
 
-# Create an empty dataframe to store results
-results_data = pd.DataFrame(columns=["Current Time", "MAE", "MAPE", "Anomalies Detected"])
-
 # Continuously fetch and train the model every 60 seconds
 while True:
     # Initialize a new Prophet model inside the loop
-    model = Prophet(interval_width=0.99, yearly_seasonality=False, weekly_seasonality=True, daily_seasonality=False)
+    model = Prophet(interval_width=0.99, yearly_seasonality=False, weekly_seasonality=False, daily_seasonality=True)
 
     train_response = requests.get(f"{prometheus_url}", params={"query": prometheus_query})
 
@@ -129,7 +129,6 @@ while True:
         time.sleep(60)
 
     # Print the final results DataFrame
-    print("Print Final Results:")
     print(results_data)
 
 

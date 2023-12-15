@@ -13,17 +13,19 @@
 3. Two metrics in Grafana dashboard
 ![Alt text](./screenshots/grafana_request_train_and_test.png)
 
-4. Anomalies detected to the
-console log
+4. Anomalies detected to the console log
 ![Alt text](./screenshots/anomaly_detection.png)
 ![Alt text](./screenshots/anomaly_detection1.png)
 
 ## Lab Task – Package model as Docker container/image
+        Docker container update
+![Alt text](./screenshots/monitoring_docker.png)
 
-- Model quality metrics
+        Model quality metrics
 ![Alt text](./screenshots/mae_and_mape.png)
 ![Alt text](./screenshots/mape_mae_metrics.png)
-- Dataframe
+
+        Anomaly counts, MAE and MAPE
 ![Alt text](./screenshots/dataframe.png)
 
 - Grafana Dashboards
@@ -32,12 +34,19 @@ console log
 ![Alt text](./screenshots/mae_gauge_grafana.png)
 
 
+
 ## Lab Task – Explore model quality vs training time series and forecast durations
+        weekly_seasonality
+![Alt text](./screenshots/anomaly_detection_.png)
+
+        daily_seasonality
+![Alt text](./screenshots/weekly_anomaly.png)
+
 ### 1. Seasonality in the Model:
  It appears that enabling weekly seasonality (while disabling yearly and daily seasonality) has been helpful in capturing patterns in the data. This is evident from the "Anomalies Detected" column, which shows the occurrences of anomalies in the data. The fact that the number of anomalies detected remains relatively consistent suggests that the model is effectively capturing and accounting for variations in the data. Additionally, the "MAE" (Mean Absolute Error) and "MAPE" (Mean Absolute Percentage Error) values are within reasonable ranges, indicating that the model's forecasts are reasonably accurate.
 
 ### 2. Forecast Horizon and Training Data:
-- From the monitoring file codes, indicated that the forecast is in interval of 1 minute. The forecasting horizon is limited to short-term predictions within a few minutes. Adding a longer baseline of training data can potentially improve the model's ability to make longer-term forecasts by capturing longer-term trends and patterns. 
+- From the monitoring file, indicates that the forecast is in interval of 1 minute. The forecasting horizon is limited to short-term predictions within a few minutes. Adding a longer baseline of training data can potentially improve the model's ability to make longer-term forecasts by capturing longer-term trends and patterns. 
 
 ### 3. Reasonable Baseline of Data for Production:
 - The choice of a reasonable baseline of data for a Prophet model in a production system depends on several factors, including the nature of the metric data, the desired forecasting horizon, and the acceptable trade-off between responsiveness and accuracy.
