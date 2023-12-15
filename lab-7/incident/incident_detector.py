@@ -7,7 +7,9 @@ from tabulate import tabulate
 from prometheus_client import start_http_server, Gauge
 
 # Define threshold and initial accumulators for each service
-threshold = 10
+threshold_1 = 6
+threshold_2 = 6
+incident_threshord = 10
 accumulator_1 = 0
 accumulator_2 = 0
 
@@ -54,13 +56,19 @@ def update_accumulator(accumulator, result_count):
     return accumulator
 
 def process_incidents(accumulator_1, accumulator_2, total_accumulator):
-    if total_accumulator >= threshold:
-        if accumulator_1 > 0 and accumulator_2 > 0:
+    if total_accumulator > incident_threshord:
+        if accumulator_1 > threshold_1 and accumulator_2 > threshold_2:
             sev1_gauge.set(1)
+            sev2_gauge.set(0)
             print("Sev 1 Incident detected! Triggering an alert.")
-        else:
+        elif (accumulator_1 > threshold_1 and accumulator_2 == 0) or (accumulator_1 == 0 and accumulator_2 > threshold_2):
+            sev1_gauge.set(0)
             sev2_gauge.set(1)
             print("Sev 2 Incident detected! Triggering an alert.")
+        else:
+            sev2_gauge.set(0)
+            sev2_gauge.set(0)
+            print("Neither Sev 1 nor Sev 2 Incident detected! Triggering an alert.")
 
 results_data = []
 
