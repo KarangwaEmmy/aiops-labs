@@ -61,23 +61,32 @@ Stop the demo cluster: `./bin/stop`
     demo_gauge
 ![](./screenshots/prometheus_demo_gauge_15.png)
 
-    db_backup_last_completion_timestamp_seconds
-!['db_backup'](./screenshots/prom_db_backup.png)
+    go_gc_duration_seconds_count
+![Alt text](./screenshots/go_gc_duration_seconds_count.png)
+![Alt text](./screenshots/go_gc_duration1.png.png)
+![Alt text](./screenshots/go_gc_duration_seconds_count_node_exporter.png)
+![Alt text](./screenshots/go_gc_duration_seconds_count_node.png)
+
+    go_gc_duration_seconds_sum
+![Alt text](./screenshots/go_gc_duration_seconds_sum.png)
+![Alt text](./screenshots/go_gc_duration_seconds_sum_graph.png)
+![Alt text](./screenshots/go_gc_duration_seconds_sum_postgres.png)
 
     go_gc_duration_seconds
 ![Alt text](./screenshots/go_gc_duration_seconds.png)
+![Alt text](./screenshots/go_gc_duration_seconds_node_exporter.png)
+![Alt text](./screenshots/go_gc_duration_seconds_node_exporter_q75.png)
+![Alt text](./screenshots/go_gc_duration_seconds_node_exporter_q1.0.png)
 
-    go_goroutines
-![Alt text](./screenshots/prom_go_routine.png)
+    go_memstats_alloc_bytes
+![Alt text](./screenshots/go_memstats_alloc_bytes_metric.png)
+![Alt text](./screenshots/go_memstats_alloc_bytes_graph.png)
+![Alt text](./screenshots/go_memstats_alloc_bytes_node_exporter.png)
+![Alt text](./screenshots/go_memstats_alloc_bytes_postgres.png)
+![Alt text](./screenshots/go_memstats_alloc_bytes_push_gateway.png)
 
-    go_memstats_heap_alloc_bytes
-![Alt text](./screenshots/go_memstats_heap_alloc_bytes.png)
-
-    process_cpu_seconds_total
-![Alt text](./screenshots/prom_cpu.png)
-
-    process_resident_memory_bytes
-![Alt text](./screenshots/prom_memory.png)
+    rate(go_gc_duration_seconds_count[5m])
+![Alt text](./screenshots/go_gc_duration_seconds_count_5m.png)
 
 #### 5. Grafana Dashboard
 !['grafana Dashboard'](./screenshots/grafana_dashboard.png)
@@ -103,11 +112,17 @@ Stop the demo cluster: `./bin/stop`
 2. Implement the metrics by running docker compose
 ![Alt text](./screenshots/docker_compose.png)
 ![Alt text](./screenshots/new_metrics.png)
-![Alt text](./screenshots/histogram_bucket.png)
+
+![Alt text](./screenshots/prometheus_new_metrics.png)
+![Alt text](./screenshots/random_histogram.png)
 ![Alt text](./screenshots/app_one_random_histogram_0_to_1_sum.png)
-![Alt text](./screenshots/app_one_random_histogram_0_to_0_6_bucket.png)
+    app_one_random_gauge_0_and_1
+![Alt text](./screenshots/app_one_random_gauge_0_and_1.png)
+![Alt text](./screenshots/app_one_random_histogram_0_to_0_6_bucket_mtric.png)
+
 
 3. Add custom panels in the Grafana dashboard to visualize
+![Alt text](./screenshots/Grafana_dashboards.png)
 ![Alt text](./screenshots/dashboard_1.png)
 ![Alt text](./screenshots/app_one_gauge_0_to_1.png)
 ![Alt text](./screenshots/app_one_gauge_0_to_0_6.png)
