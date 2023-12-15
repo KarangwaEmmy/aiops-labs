@@ -1,33 +1,33 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: monitorservice
+  name: incidentdetectorservice
   labels:
-    app: monitor_app
+    app: incident-detector
 spec:
   replicas: 0
   selector:
     matchLabels:
-      app: monitor_app
+      app: incident-detector
       tier: web
   template:
     metadata:
       labels:
-        app: monitor_app
+        app: incident-detector
         tier: web
       annotations:
         prometheus.io/scrape: "true"
-        prometheus.io/port: "8099"
+        prometheus.io/port: "8077"
         prometheus.io/path: "/metrics"
     spec:
       containers:
-      - name: monitor-app
-        image: index.docker.io/kemmyxy/lab6monitor:latest
+      - name: incident-detector-app
+        image: index.docker.io/kemmyxy/incident_detector:latest
         ports:
         - containerPort: 8080
         imagePullPolicy: Always
         command: ["python"]
-        args: ["monitor.py","-afrontend","-bshippingservice","-fboutique_training.json","-p8099","15"]
+        args: ["incident_detector.py"]
         resources:
-          requests:
+          requests: 
             cpu: 200m

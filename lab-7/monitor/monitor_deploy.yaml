@@ -27,7 +27,7 @@ spec:
         - containerPort: 8080
         imagePullPolicy: Always
         command: ["python"]
-        args: ["monitor.py","-afrontend","-bshippingservice","-ffrontend.json","-p8099","15"]
+        args: ["monitor.py","-afrontend","-bshippingservice","-ffrontend_2_shippingservice.json","-p8099","15"]
         resources:
           requests:
             cpu: 200m
@@ -64,7 +64,7 @@ spec:
         - containerPort: 8080
         imagePullPolicy: Always
         command: ["python"]
-        args: ["monitor.py","-acheckoutservice","-bshippingservice","-fcheckoutservice.json","-p8090","15"]
+        args: ["monitor.py","-acheckoutservice","-bshippingservice","-fcheckoutservice_2_shippingservice.json","-p8090","15"]
         resources:
           requests:
             cpu: 200m

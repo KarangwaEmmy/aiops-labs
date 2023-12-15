@@ -192,5 +192,5 @@ if __name__ == '__main__':
 
     duration = int(args[0])
     print("waiting time",duration)
-    main(service1, service2, trainingfile, port, duration)
+    main(duration, service1, service2, trainingfile, port)
 

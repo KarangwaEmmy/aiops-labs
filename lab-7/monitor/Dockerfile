@@ -6,8 +6,8 @@ RUN wget -O /usr/local/bin/dumb-init https://github.com/Yelp/dumb-init/releases/
 RUN chmod +x /usr/local/bin/dumb-init
 
 # Copy the repo content to the working directory
-COPY checkoutservice.json /app
-COPY frontend.json /app
+COPY checkoutservice_2_shippingservice.json /app
+COPY frontend_2_shippingservice.json /app
 COPY monitor.py /app
 
 # Install Prometheus client library
