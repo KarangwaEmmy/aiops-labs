@@ -60,12 +60,20 @@
 ## Lab Task 4
 - Deploying Delay 0.2 seconds
 ![Alt text](./screenshots/delay_2s.png)
-
+![Alt text](./screenshots/2_delay.png)
 
 
 - Deploying Delay 0.4 seconds
 ![Alt text](./screenshots/delay_4s.png)
+![Alt text](./screenshots/4_delay.png)
 
+- screen shot from Kiali showing shipping service response times to the Source.
+![Alt text](./screenshots/shipping_service_kiali.png)
+![Alt text](./screenshots/time_bound.png)
+![Alt text](./screenshots/traces.png)
+![Alt text](./screenshots/traffic.png)
+![Alt text](./screenshots/Request_duration.png)
+![Alt text](./screenshots/source.png)
 ### Shut down the cluster
     kubectl delete -k .
 ![Alt text](./screenshots/delete_cluster.png)
